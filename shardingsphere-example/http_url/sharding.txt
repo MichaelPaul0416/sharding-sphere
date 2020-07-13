@@ -1,0 +1,5 @@
+1.获取所有数据源信息
+curl -X POST http://localhost:8080/sharding/all/dataSources
+
+2.根据id获取对应的记录
+curl -X POST http://localhost:8080/sharding/query/account/1
