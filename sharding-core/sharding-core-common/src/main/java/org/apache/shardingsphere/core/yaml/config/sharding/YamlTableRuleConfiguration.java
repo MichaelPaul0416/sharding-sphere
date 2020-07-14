@@ -22,6 +22,7 @@ import lombok.Setter;
 import org.apache.shardingsphere.underlying.common.yaml.config.YamlConfiguration;
 
 /**
+ * 表的规则
  * Table rule configuration for YAML.
  */
 @Getter
@@ -29,11 +30,17 @@ import org.apache.shardingsphere.underlying.common.yaml.config.YamlConfiguration
 public final class YamlTableRuleConfiguration implements YamlConfiguration {
     
     private String logicTable;
-    
+
     private String actualDataNodes;
-    
+
+    /**
+     * 关于表的数据库分片策略
+     */
     private YamlShardingStrategyConfiguration databaseStrategy;
-    
+
+    /**
+     * 数据库分片之后，表的具体分片
+     */
     private YamlShardingStrategyConfiguration tableStrategy;
     
     private YamlKeyGeneratorConfiguration keyGenerator;

@@ -51,8 +51,10 @@ public final class TableRuleConfigurationYamlSwapper implements YamlSwapper<Yaml
     @Override
     public TableRuleConfiguration swap(final YamlTableRuleConfiguration yamlConfiguration) {
         Preconditions.checkNotNull(yamlConfiguration.getLogicTable(), "Logic table cannot be null.");
+        // 设置单张表的分片配置
         TableRuleConfiguration result = new TableRuleConfiguration(yamlConfiguration.getLogicTable(), yamlConfiguration.getActualDataNodes());
         if (null != yamlConfiguration.getDatabaseStrategy()) {
+            // 设置的当前表的数据库分片策略
             result.setDatabaseShardingStrategyConfig(shardingStrategyConfigurationYamlSwapper.swap(yamlConfiguration.getDatabaseStrategy()));
         }
         if (null != yamlConfiguration.getTableStrategy()) {

@@ -38,6 +38,7 @@ import org.apache.shardingsphere.core.yaml.config.sharding.strategy.YamlStandard
 import org.apache.shardingsphere.underlying.common.yaml.swapper.YamlSwapper;
 
 /**
+ * 分片策略转换器
  * Sharding strategy configuration YAML swapper.
  */
 public final class ShardingStrategyConfigurationYamlSwapper implements YamlSwapper<YamlShardingStrategyConfiguration, ShardingStrategyConfiguration> {
@@ -70,6 +71,7 @@ public final class ShardingStrategyConfigurationYamlSwapper implements YamlSwapp
         if (null != yamlConfiguration.getStandard()) {
             shardingStrategyConfigCount++;
             if (null == yamlConfiguration.getStandard().getRangeAlgorithmClassName()) {
+                // 设置分片的字段名字和具体的分片算法实现类
                 result = new StandardShardingStrategyConfiguration(yamlConfiguration.getStandard().getShardingColumn(),
                         ShardingAlgorithmFactory.newInstance(yamlConfiguration.getStandard().getPreciseAlgorithmClassName(), PreciseShardingAlgorithm.class));
             } else {
@@ -95,6 +97,7 @@ public final class ShardingStrategyConfigurationYamlSwapper implements YamlSwapp
             shardingStrategyConfigCount++;
             result = new NoneShardingStrategyConfiguration();
         }
+        // 只能为当前库或者表设置一个分片策略
         Preconditions.checkArgument(shardingStrategyConfigCount <= 1, "Only allowed 0 or 1 sharding strategy configuration.");
         return result;
     }

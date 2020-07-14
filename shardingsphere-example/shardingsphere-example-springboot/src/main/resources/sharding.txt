@@ -1,0 +1,13 @@
+YamlShardingRuleConfiguration implement YamlConfiguration
+    Map<String,YamlTableRuleConfiguration> -- 保存表的映射配置关系，key是表名
+    Map<String,YamlMasterSlaveRuleConfiguration> -- 保存主从的对应关系
+    YamlShardingStrategyConfiguration -> {defaultDatabaseStrategy,defaultTableStrategy} -- 数据库分片配置和表分片配置
+    YamlKeyGeneratorConfiguration -- 主键生成器配置
+    YamlEncryptRuleConfiguration -- 加密配置
+
+YamlShardingStrategyConfiguration implement YamlConfiguration
+    YamlStandardShardingStrategyConfiguration
+    YamlComplexShardingStrategyConfiguration
+    YamlHintShardingStrategyConfiguration
+    YamlInlineShardingStrategyConfiguration
+    YamlNoneShardingStrategyConfiguration

@@ -27,6 +27,7 @@ import org.apache.shardingsphere.core.yaml.config.sharding.strategy.YamlNoneShar
 import org.apache.shardingsphere.core.yaml.config.sharding.strategy.YamlStandardShardingStrategyConfiguration;
 
 /**
+ * 分片策略分为五个(standard,complex,hint,inline,none)
  * Sharding strategy configuration for YAML.
  */
 @Getter

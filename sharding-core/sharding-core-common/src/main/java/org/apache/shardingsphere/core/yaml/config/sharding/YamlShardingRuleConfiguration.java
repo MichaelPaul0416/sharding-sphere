@@ -34,9 +34,15 @@ import java.util.Map;
 @Getter
 @Setter
 public class YamlShardingRuleConfiguration implements YamlConfiguration {
-    
+
+    /**
+     * 获取所有表的分片配置
+     */
     private Map<String, YamlTableRuleConfiguration> tables = new LinkedHashMap<>();
-    
+
+    /**
+     * 这个集合里面的值会遵循一个分片规则,如order,order_item 那么他们就是binding的
+     */
     private Collection<String> bindingTables = new ArrayList<>();
     
     private Collection<String> broadcastTables = new ArrayList<>();

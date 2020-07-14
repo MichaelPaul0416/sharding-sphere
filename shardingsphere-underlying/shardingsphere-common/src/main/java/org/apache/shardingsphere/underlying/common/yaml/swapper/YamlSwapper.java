@@ -37,6 +37,7 @@ public interface YamlSwapper<Y extends YamlConfiguration, T> {
     
     /**
      * Swap from YAML configuration to object.
+     * 将yaml/properties配置的属性转换成对象
      *
      * @param yamlConfiguration YAML configuration
      * @return swapped object

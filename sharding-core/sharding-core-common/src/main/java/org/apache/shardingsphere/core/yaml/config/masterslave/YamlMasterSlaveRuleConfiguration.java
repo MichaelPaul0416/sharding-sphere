@@ -37,7 +37,10 @@ public class YamlMasterSlaveRuleConfiguration implements YamlConfiguration {
     private String masterDataSourceName;
     
     private List<String> slaveDataSourceNames = new ArrayList<>();
-    
+
+    /**
+     * 关于从库选择的负载均衡算法类型，根据类型选择通过SPI注册的算法实现
+     */
     private String loadBalanceAlgorithmType;
     
     private Properties props = new Properties();

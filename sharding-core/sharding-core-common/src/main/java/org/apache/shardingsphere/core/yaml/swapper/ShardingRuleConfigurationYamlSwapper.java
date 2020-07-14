@@ -78,6 +78,7 @@ public final class ShardingRuleConfigurationYamlSwapper implements YamlSwapper<Y
         for (Entry<String, YamlTableRuleConfiguration> entry : yamlConfiguration.getTables().entrySet()) {
             YamlTableRuleConfiguration tableRuleConfig = entry.getValue();
             tableRuleConfig.setLogicTable(entry.getKey());
+            // 设置表的分片配置
             result.getTableRuleConfigs().add(tableRuleConfigurationYamlSwapper.swap(tableRuleConfig));
         }
         result.setDefaultDataSourceName(yamlConfiguration.getDefaultDataSourceName());
