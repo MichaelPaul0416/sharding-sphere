@@ -40,7 +40,8 @@ import java.util.Properties;
  */
 @Getter
 public final class ShardingRuntimeContext extends MultipleDataSourcesRuntimeContext<ShardingRule> {
-    
+
+    // 数据库的元数据信息
     private final CachedDatabaseMetaData cachedDatabaseMetaData;
     
     private final ShardingTransactionManagerEngine shardingTransactionManagerEngine;

@@ -71,8 +71,10 @@ public abstract class AbstractDataSourceAdapter extends AbstractUnsupportedOpera
     
     private DatabaseType createDatabaseType(final DataSource dataSource) throws SQLException {
         if (dataSource instanceof AbstractDataSourceAdapter) {
+            // 如果是sharding-sphere定义的数据源的话，那就委托给他们去获取数据库类型
             return ((AbstractDataSourceAdapter) dataSource).databaseType;
         }
+        // 否则的话通过数据库的connection获取
         try (Connection connection = dataSource.getConnection()) {
             return DatabaseTypes.getDatabaseTypeByURL(connection.getMetaData().getURL());
         }

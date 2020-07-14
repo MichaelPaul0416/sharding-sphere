@@ -86,7 +86,10 @@ public class SpringBootConfiguration implements EnvironmentAware {
     private final SpringBootShadowRuleConfigurationProperties shadowRule;
     
     private final SpringBootPropertiesConfigurationProperties props;
-    
+
+    /**
+     * 每个分片对应的实际驱动包中的数据源类型
+     */
     private final Map<String, DataSource> dataSourceMap = new LinkedHashMap<>();
     
     private final String jndiName = "jndi-name";
@@ -154,6 +157,7 @@ public class SpringBootConfiguration implements EnvironmentAware {
         String prefix = "spring.shardingsphere.datasource.";
         for (String each : getDataSourceNames(environment, prefix)) {
             try {
+                // 读取数据源
                 dataSourceMap.put(each, getDataSource(environment, prefix, each));
             } catch (final ReflectiveOperationException ex) {
                 throw new ShardingSphereException("Can't find datasource type!", ex);
@@ -177,7 +181,7 @@ public class SpringBootConfiguration implements EnvironmentAware {
         if (dataSourceProps.containsKey(jndiName)) {
             return getJndiDataSource(dataSourceProps.get(jndiName).toString());
         }
-        DataSource result = DataSourceUtil.getDataSource(dataSourceProps.get("type").toString(), dataSourceProps);
+        DataSource result = DataSourceUtil.getDataSource(dataSourceProps.get("type").toString(), dataSourceProps);// 实例化驱动包中的数据库类型
         DataSourcePropertiesSetterHolder.getDataSourcePropertiesSetterByType(dataSourceProps.get("type").toString()).ifPresent(
             dataSourcePropertiesSetter -> dataSourcePropertiesSetter.propertiesSet(environment, prefix, dataSourceName, result));
         return result;

@@ -54,7 +54,7 @@ public abstract class AbstractRuntimeContext<T extends BaseRule> implements Runt
         properties = new ConfigurationProperties(null == props ? new Properties() : props);
         this.databaseType = databaseType;
         executorEngine = new ExecutorEngine(properties.<Integer>getValue(ConfigurationPropertyKey.EXECUTOR_SIZE));
-        sqlParserEngine = SQLParserEngineFactory.getSQLParserEngine(DatabaseTypes.getTrunkDatabaseTypeName(databaseType));
+        sqlParserEngine = SQLParserEngineFactory.getSQLParserEngine(DatabaseTypes.getTrunkDatabaseTypeName(databaseType));//获取主流的数据库类型
         ConfigurationLogger.log(rule.getRuleConfiguration());
         ConfigurationLogger.log(props);
     }
