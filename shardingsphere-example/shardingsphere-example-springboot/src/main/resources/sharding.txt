@@ -5,9 +5,9 @@ YamlShardingRuleConfiguration implement YamlConfiguration
     YamlKeyGeneratorConfiguration -- 主键生成器配置
     YamlEncryptRuleConfiguration -- 加密配置
 
-YamlShardingStrategyConfiguration implement YamlConfiguration
-    YamlStandardShardingStrategyConfiguration
-    YamlComplexShardingStrategyConfiguration
-    YamlHintShardingStrategyConfiguration
-    YamlInlineShardingStrategyConfiguration
-    YamlNoneShardingStrategyConfiguration
+YamlShardingStrategyConfiguration implement YamlConfiguration -- 分片策略
+    YamlStandardShardingStrategyConfiguration -- 标准
+    YamlComplexShardingStrategyConfiguration -- 复杂
+    YamlHintShardingStrategyConfiguration -- 人为指定
+    YamlInlineShardingStrategyConfiguration -- 根据表达式计算分片结果
+    YamlNoneShardingStrategyConfiguration -- 不分片
